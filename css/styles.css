@@ -298,7 +298,7 @@ nav h1 a {
 #reviews-list {
   margin: 0;
   padding: 0;
-  min-width: 100%;
+  
 }
 
 #reviews-list li {
@@ -309,8 +309,8 @@ nav h1 a {
   margin: 0 0 30px;
   overflow: hidden;
   padding: 0 20px 20px;
-  position: relative;
-  width: 100%;
+  position: inherit;
+  width: 85%;
 }
 
 #reviews-list li p {
@@ -320,3 +320,30 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
 }
+
+@media screen and (max-width: 750px) {
+  #maincontent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #breadcrumb {
+  width: 100%;
+  }
+ .inside #map-container {
+   height: 50%;
+   width: 100%;
+ }
+  #restaurant-container {
+    margin-top: 300px;
+    width: 100%;
+  }
+  #reviews-container {
+    width: 100%;
+  }
+  #reviews-list {
+    list-style: none;
+  }
+  .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+    top: 50px;
+  }
+ }
