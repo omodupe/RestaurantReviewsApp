@@ -3,7 +3,7 @@
 
 body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-size: 12pt;
 	color: #333;
 	line-height: 1.5;
 }
@@ -16,7 +16,7 @@ body {
 
 ul, li {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-size: 15pt;
 	color: #333;
 }
 
@@ -237,8 +237,6 @@ nav h1 a {
 .inside #footer {
   bottom: 0;
   position: relative;
-  width: 100%;
- 
 }
 
 #restaurant-name {
@@ -247,7 +245,7 @@ nav h1 a {
   font-size: 20pt;
   font-weight: 200;
   letter-spacing: 0;
-  margin: 15px 0 30px;
+  margin: 15px 10px 30px;
   text-transform: uppercase;
   line-height: 1.1;
 }
@@ -257,17 +255,18 @@ nav h1 a {
 }
 
 #restaurant-address {
-  font-size: 12pt;
+  font-size: 15pt;
   margin: 10px 0px;
+  color: black;
 }
 
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
-  font-size: 12pt;
+  font-size: 15pt;
   font-weight: 300;
   letter-spacing: 10px;
-  margin: 0 0 20px;
+  margin: 2px 0 20px;
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
@@ -322,27 +321,28 @@ nav h1 a {
 }
 
 @media screen and (max-width: 750px) {
-  #maincontent {
-    display: flex;
-    flex-wrap: wrap;
-  }
   #breadcrumb {
   width: 100%;
   }
+
  .inside #map-container {
    height: 50%;
    width: 100%;
- }
+  }
+
   #restaurant-container {
     margin-top: 300px;
     width: 100%;
   }
+
   #reviews-container {
     width: 100%;
   }
+
   #reviews-list {
     list-style: none;
   }
+
   .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
     top: 50px;
   }

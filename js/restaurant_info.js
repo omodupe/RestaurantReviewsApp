@@ -81,16 +81,20 @@ fetchRestaurantFromURL = (callback) => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
+  name.setAttribute('aria-label', name.innerHTML);
   name.innerHTML = restaurant.name;
 
   const address = document.getElementById('restaurant-address');
+  address.setAttribute('aria-label', address.innerHTML);
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img';
+  image.alt = 'restaurant image';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
+  cuisine.setAttribute('aria-label', cuisine.innerHTML);
   cuisine.innerHTML = restaurant.cuisine_type;
 
   // fill operating hours
@@ -128,6 +132,8 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
+  title.setAttribute('aria-label', title.innerHTML);
+  title.tabIndex = '0';
   container.appendChild(title);
 
   if (!reviews) {
@@ -150,20 +156,24 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
+  name.setAttribute('aria-label', name.innerHTML);
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
+  date.setAttribute('aria-label', date.innerHTML);
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.setAttribute('aria-label', rating.innerHTML);
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.setAttribute('aria-label', comments.innerHTML);
   li.appendChild(comments);
-
+  
   return li;
 }
 
