@@ -31,7 +31,7 @@ self.addEventListener('install', event => {
         .open(cacheName)
         .then(Cache => {
             console.log('Service Worker: Caching files');
-            Cache.addAll(cacheFiles);
+            return Cache.addAll(cacheFiles);
         })
         // Do this to skip waiting
         .then(() => self.skipWaiting())
@@ -61,5 +61,26 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event =>{
     console.log('Service Worker: Fetching');
 
-    event.respondWith(fetch(event.request).catch(() => caches.match(event.request)))
-})
+    event.respondWith(
+        caches.match(event.request).then((response) =>{
+            if (response) {
+                console.log(`Found, ${event.request} in cache`);
+                return response;
+            }
+            else {
+                console.log(`couldnt find ${event.request} in cache`);
+                return fetch(event.request)
+                .then((response) =>{
+                    const resClone = response.clone();
+                    caches.open(cacheName).then((cache) => {
+                        cache.put(event.request, resClone);
+                    });
+                    return response;
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+            }
+        })
+    );
+});
